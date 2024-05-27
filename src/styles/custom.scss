@@ -1,0 +1,18 @@
+// src/styles/custom.scss
+
+// Import Bootstrap’s functions and variables first to enable overrides
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+
+// Override primary and secondary colors
+$primary: #521119;  // Orange Red as an example for primary color
+$secondary: #9ea59d;  // Lime Green as an example for secondary color
+
+// Optionally, you can redefine the theme-colors map to include only the colors you want to override
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary
+);
+
+// Import the rest of Bootstrap now that variables have been overridden
+@import "../../node_modules/bootstrap/scss/bootstrap";
