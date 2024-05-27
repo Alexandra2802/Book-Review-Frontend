@@ -26,7 +26,7 @@ function ReviewForm({ onAddReview }) {
       author,
       reviewText,
       rating,
-      image: URL.createObjectURL(image),
+      cover: URL.createObjectURL(image),
     };
 
     onAddReview(review);
