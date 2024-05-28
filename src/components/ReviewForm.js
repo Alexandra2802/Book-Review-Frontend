@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Form, Button, Container, Row, Col, Alert } from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css'; // Default Bootstrap CSS
-import '../styles/custom.css'; // Custom CSS that overrides Bootstrap
-
+import StarRating from "./StarRating";
+import "../styles/ReviewForm.css";
+import "bootstrap/dist/css/bootstrap.min.css"; // Default Bootstrap CSS
+import "../styles/custom.css"; // Custom CSS that overrides Bootstrap
 
 function ReviewForm({ onAddReview }) {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [reviewText, setReviewText] = useState("");
-  const [rating, setRating] = useState("");
+  const [rating, setRating] = useState(0);
   const [image, setImage] = useState(null);
-  const [successMessage, setSuccessMessage] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,24 +33,22 @@ function ReviewForm({ onAddReview }) {
     onAddReview(review);
 
     // Show success message
-    setSuccessMessage("Review submitted successfully!");
+    setSuccess(true);
 
-    // Reset form fields after a short delay
-    setTimeout(() => {
-      setTitle("");
-      setAuthor("");
-      setReviewText("");
-      setRating("");
-      setImage(null);
-      setSuccessMessage("");
-    }, 3000); // Message disappears after 3 seconds
+    // Reset form fields
+    setTitle("");
+    setAuthor("");
+    setReviewText("");
+    setRating(0);
+    setImage(null);
+    // setSuccessMessage("");
   };
 
   return (
-    <Container className="my-4">
+    <Container className="my-4 form-cantainer">
       <Row>
         <Col>
-          <h2>Write a Book Review</h2>
+          <h1 className="submit-review-title">Write a Book Review</h1>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formTitle">
               <Form.Label>Book Title</Form.Label>
@@ -82,7 +81,7 @@ function ReviewForm({ onAddReview }) {
               />
             </Form.Group>
 
-            <Form.Group controlId="formRating">
+            {/* <Form.Group controlId="formRating">
               <Form.Label>Rating</Form.Label>
               <Form.Control
                 type="number"
@@ -92,6 +91,10 @@ function ReviewForm({ onAddReview }) {
                 max="5"
                 required
               />
+            </Form.Group> */}
+            <Form.Group controlId="formRating">
+              <Form.Label>Rating</Form.Label>
+              <StarRating onRatingChange={setRating} />
             </Form.Group>
 
             <Form.Group controlId="formImage">
@@ -112,10 +115,10 @@ function ReviewForm({ onAddReview }) {
               </Button>
             </div>
 
-            {successMessage && (
-              <div className="mt-3">
-                <Alert variant="success">{successMessage}</Alert>
-              </div>
+            {success && (
+              <Alert variant="success" className="mt-3">
+                Review submitted successfully!
+              </Alert>
             )}
           </Form>
         </Col>

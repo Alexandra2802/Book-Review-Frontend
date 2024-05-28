@@ -1,0 +1,20 @@
+.form-label{
+    font-size:large;
+    margin-top: 1%;
+}
+
+.submit-review-title{
+    color: var(--bs-primary);
+    margin-top: 1vh;
+    margin-bottom: 0.5vh;
+    padding-top: 0.5vh;
+}
+
+.btn-primary, .btn-secondary{
+    margin-top: 2%;
+    margin-bottom: 1%;
+}
+
+.form-cantainer{
+    height: 100vh;
+}

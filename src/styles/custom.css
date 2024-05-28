@@ -14,7 +14,7 @@
   --bs-orange: #fd7e14;
   --bs-yellow: #ffc107;
   --bs-green: #198754;
-  --bs-teal: #20c997;
+  --bs-teal: #20c996af;
   --bs-cyan: #0dcaf0;
   --bs-black: #000;
   --bs-white: #fff;
@@ -4553,11 +4553,11 @@ textarea.form-control-lg {
 }
 
 .alert {
-  --bs-alert-bg: transparent;
+  --bs-alert-bg: var(bs-success-border-subtle);
   --bs-alert-padding-x: 1rem;
   --bs-alert-padding-y: 1rem;
   --bs-alert-margin-bottom: 1rem;
-  --bs-alert-color: inherit;
+  --bs-alert-color: var(--bs-black);
   --bs-alert-border-color: transparent;
   --bs-alert-border: var(--bs-border-width) solid var(--bs-alert-border-color);
   --bs-alert-border-radius: var(--bs-border-radius);
